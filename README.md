@@ -1,6 +1,6 @@
 ## Description
 
-Spin up a box with a Datomic Free instance from the commandline. Done.
+Spin up a running Datomic Free box from the commandline. Done.
 
 TODO
 
