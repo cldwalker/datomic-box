@@ -23,7 +23,9 @@
                   :exclusions [org.slf4j/slf4j-api]]
                  [org.jclouds.driver/jclouds-sshj "1.5.5"]
                  [ch.qos.logback/logback-classic "1.0.9"]]
-  :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}}
+  :plugins [[com.palletops/pallet-lein "0.6.0-beta.9"]]
+  :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
+             :pallet {}}
   :repositories
   {"sonatype" "https://oss.sonatype.org/content/repositories/releases/"} 
   :aliases {"all" ["with-profile" "dev:dev,1.4"]}

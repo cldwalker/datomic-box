@@ -1,6 +1,7 @@
 (ns datomic-box.core
   (:require
     [pallet.api :as api]
+    [pallet.actions :as actions]
     [pallet.configure :as configure]
     [pallet.crate.automated-admin-user :as admin-user]
     [pallet.crate.java :as java]
@@ -20,12 +21,16 @@
    :phases
    {:bootstrap (api/plan-fn (admin-user/automated-admin-user))}))
 
-(def project-spec
+(def update-server
+  (api/server-spec
+    :phases
+    {:configure (api/plan-fn (actions/package-manager :update))}))
+
+(def datomic-box-spec
   (api/group-spec "datomic-box"
    :extends [base-server
-             ;; TODO: Use openjdk. Currently ubuntu 12 ships with a broken openjdk.
-             ;; Need to update packages to unbreak it.
-             (java/server-spec {:vendor :oracle :version [7]})
+             update-server
+             (java/server-spec {:version [7]})
              (datomic/datomic {})
              (upstart/server-spec {})]
    :count 1
