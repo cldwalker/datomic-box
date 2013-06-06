@@ -40,6 +40,6 @@
   ;; Use api/converge when creating your box for the first time.
   ;; For future invocations on your box, use api/lift.
   (api/converge
-    project-spec
+    datomic-box-spec
     :phase :install
     :compute (configure/compute-service :aws))) 
