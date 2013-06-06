@@ -2,7 +2,8 @@
 
 Spin up a running Datomic Free box from the commandline. Done.
 
-TODO
+The default box is a 1GB Ubuntu box on EC2 running openjdk Java version 7 but all this can [be
+configured](#configuration).
 
 ## Usage
 
@@ -52,6 +53,27 @@ You should now be able to access your transactor with uri:
 ## Run a Public Datomic App
 
 TODO
+
+## Configuration
+
+Since this is all based on [pallet](http://palletops.com/), refer to [its
+documentation](http://palletops.com/doc/reference-0.8/) frequently.
+
+To configure the following, modify src/datomic_box/core.clj on your fork:
+
+* `datomic` - modify [datomic-crate](https://github.com/rstradling/datomic-crate) options map passed
+  to `datomic/datomic`
+* `java` - modify [java-crate](https://github.com/pallet/java-crate) options map passed to
+  `java/server-spec`
+* `OS, instance size, etc.` - modify [node options](http://palletops.com/doc/reference/0.8/node-types/) on
+  `default-node-spec`
+* `provider` - Use `lein pallet providers` to see available providers. Use `lein pallet add-service`
+  to add your own.
+
+## Credits
+
+None of this would be possible without [pallet](http://palletops.com) and the
+[datomic-crate](https://github.com/rstradling/datomic-crate).
 
 ## Bugs/Issues
 
